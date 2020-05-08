@@ -18,4 +18,8 @@ const Route = use('Route')
 
 Route.on('/').render('yugioh-pricer-v2')
 
+Route.get('/cards', () => {
+    return ["Blue-eyes White Dragon", "Dark Magician", "Evenly Matched"]
+})
+
 Route.on('/bob').render('billy-bob')
