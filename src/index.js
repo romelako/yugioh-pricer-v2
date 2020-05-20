@@ -1,49 +1,43 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
-import axios from "axios";
+import CardInput from "./CardInput.jsx";
+import Options from "./Options.jsx";
+import Table from "./Table.jsx";
 
 export default class App extends Component {
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = {
-      cards: [],
-      card: ""
+      cards: []
     }
   }
 
-  render() {
-    return (
-      <div>
-
-      </div>
-    );
+  setCards(cards) {
+    this.setState({ cards: cards});
   }
 
-  componentWillMount() {
-    let self = this
-    axios.get('/cards')
-      .then(function (response) {
-        // handle success
-        console.log(response.data);
-
-        self.setState({ cards: response.data })
-      })
+  render() {
+      return (
+          <div className="row">
+            <div className="col-md-8 offset-md-2">
+              <div className="app">
+                <div className="row section">
+                  <div className="col-md-6">
+                    <CardInput setCards={this.setCards.bind(this)} cards={this.state.cards} />
+                  </div>
+                  <div className="col-md-6">
+                    <Options />
+                  </div>
+                </div>
+                <Table cards={this.state.cards} />
+              </div>
+            </div>
+          </div>
+          
+      )
   }
 }
 
 const wrapper = document.getElementById("container");
 wrapper ? ReactDOM.render(<App />, wrapper) : false;
-
-/*
-<App>
-  <InputForm />
-  <Pricing />
-  <Table>
-    <Total />
-    <ActualTable>
-      <Row></Row>
-    </ActualTable>
-  </Table>
-</App>
-*/
