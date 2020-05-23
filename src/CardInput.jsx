@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Autocomplete from "react-autocomplete";
 
 class CardInput extends Component {
     constructor(props) {
@@ -28,7 +29,19 @@ class CardInput extends Component {
         return (
             <div>
                 <label>Card Name</label>
-                <input type="text" className="form-control" value={this.state.name} onChange={(e) => this.setState({ name: e.target.value })} />
+                <Autocomplete
+                    getItemValue={(item) => item}
+                    items={this.props.cardNames}
+                    shouldItemRender={(card, value) => card.indexOf(value) !== -1}
+                    renderItem={(item, isHighlighted) =>
+                        <div style={{ background: isHighlighted ? 'lightgray' : 'white' }} key={item}>
+                            {item}
+                        </div>
+                    }
+                    value={this.state.name}
+                    onChange={(e) => this.setState({ name: e.target.value })}
+                    onSelect={(val) => this.setState({ name: val })}
+                />
 
                 <label>Set Name</label>
                 <input type="text" className="form-control" value={this.state.set} onChange={(e) => this.setState({ set: e.target.value })} />

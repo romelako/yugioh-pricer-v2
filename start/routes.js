@@ -22,4 +22,12 @@ Route.get('/cards', () => {
     return ["Blue-eyes White Dragon", "Dark Magician", "Evenly Matched"]
 })
 
+Route.get('/sets', () => {
+    return ["SDY", "SDK", "SDJ"]
+})
+
+Route.get('/rarities', () => {
+    return ["Secret Rare", "Ultra Rare", "Ultimate Rare"]
+})
+
 Route.on('/bob').render('billy-bob')

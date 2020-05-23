@@ -30,6 +30,7 @@
     "@adonisjs/shield": "^1.0.8",
     "axios": "^0.19.2",
     "react": "^16.13.1",
+    "react-autocomplete": "^1.8.1",
     "react-dom": "^16.13.1"
   },
   "devDependencies": {
